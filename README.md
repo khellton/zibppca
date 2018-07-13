@@ -9,19 +9,28 @@ This vignette describes how to use the R package zibppca to perform Zero-inflate
 Installation
 ============
 
-You can install the R package zibppca directly from GitHub. All files in the package have help files, accessed by using ?
+You can install the R package *zibppca* directly from GitHub, after installing the package devtools. The help description files can be accessed by using ?
 
 ``` r
-# install.packages("devtools")
+
+#Install and load the devtools package
+install.packages("devtools")
 library(devtools)
-devtools::install_github("khellton/zibppca")
+
+# Install the zibppca package directly from GitHub
+install_github("khellton/zibppca")
+
+#Load the zibppca package
+library(zibppca)
+
+#Check the help file
 ?zibppca
 ```
 
-Example data
-============
+Analyzing NPI items
+===================
 
-First the data is loaded as an data.frame. The distribution of items can be visually inspected by histograms or clustered box plots.
+First, load the NPI data either from SPSS or csv file and create a data.frame. Then the first 10 patients should look something like this:
 
     #>    Delusions_NPI1 Hallucinations_NPI2 Aggression_NPI3 Depression_NPI4
     #> 1               0                   0               0               6
@@ -57,17 +66,17 @@ First the data is loaded as an data.frame. The distribution of items can be visu
     #> 9                  1                      0           0              3
     #> 10                 6                     12          12              0
 
-![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-1-1.png)![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-1-2.png)![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-1-3.png)
+The distribution of the different items can be visually inspected by histograms, or clustered box plots, for instance as seen below for Delusions and Aggression.
 
-Example data
-============
+![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-1.png)![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-2.png)![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-3.png)
 
-The zibppca package has the following outline
+Principal component analysis
+============================
+
+The *zibppca* package has the following outline
 
 ``` r
-#Load the R package
 library(zibppca)
-
 #Run the main command 
 result <- zibppca(data,scale. = TRUE)
 #> [1] "Analyzing data with 12 variables and 830 observations"
@@ -95,7 +104,7 @@ result$eigenvalues
 plot(result$eigenvalues,main = 'Scree plot',xlab='Eigenvalues')
 ```
 
-![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-1.png)
+![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-3-1.png)
 
 ``` r
 
@@ -103,4 +112,4 @@ plot(result$eigenvalues,main = 'Scree plot',xlab='Eigenvalues')
 plot(result$scores[,1],result$scores[,2],main = 'Score plot',xlab='1. component',ylab='2. component')
 ```
 
-![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-2.png)
+![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-3-2.png)

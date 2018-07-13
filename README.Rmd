@@ -17,17 +17,26 @@ This vignette describes how to use the R package zibppca to perform Zero-inflate
 
 # Installation
 
-You can install the R package zibppca directly from GitHub. All files in the package have help files, accessed by using ?
+You can install the R package *zibppca* directly from GitHub, after installing the package devtools. The help description files can be accessed by using ?
 
 ```{r gh-installation, eval = FALSE}
-# install.packages("devtools")
+
+#Install and load the devtools package
+install.packages("devtools")
 library(devtools)
-devtools::install_github("khellton/zibppca")
+
+# Install the zibppca package directly from GitHub
+install_github("khellton/zibppca")
+
+#Load the zibppca package
+library(zibppca)
+
+#Check the help file
 ?zibppca
 ```
 
-# Example data 
-First the data is loaded as an data.frame. The distribution of items can be visually inspected by histograms or clustered box plots. 
+# Analyzing NPI items 
+First, load the NPI data either from SPSS or csv file and create a data.frame. Then the first 10 patients should look something like this: 
 ```{r, echo = FALSE,warnings=FALSE}
 library(foreign) # to import SPSS sav files
 data_new <- read.spss('~/NR/PCANPI/Data/New_selection_nursing_home.sav', to.data.frame=TRUE)
@@ -35,20 +44,26 @@ data <- data.frame(data_new[(data_new$aar2004_2011==0),8:19])
 
 get.names <- read.csv("~/NR/ModNPI/Data/NPILong.csv",colClasses = c('factor',rep('numeric',15)),dec =',',na.strings = '#NULL!', header = TRUE,sep = ';')
 colnames(data) <- colnames(get.names)[4:15]
-
 head(data, 10L)
-hist(data$Delusions_NPI1,main='Delusions')
-hist(data$Aggression_NPI3,main='Aggression')
+```
+
+The distribution of the different items can be visually inspected by histograms, or clustered box plots, for instance as seen below for Delusions and Aggression. 
+
+```{r, echo = FALSE,warnings=FALSE}
+
+#Creating histograms
+hist(data$Delusions_NPI1,main='Delusions',xlab = 'Domain score')
+hist(data$Aggression_NPI3,main='Aggression',xlab = 'Domain score')
+
+#Creating clustered box plots
 par(mar=c(9,2,0,0))
 boxplot(data,las=2,cex.axis=0.7)
 ```
 
-# Example data 
-The zibppca package has the following outline
+# Principal component analysis
+The *zibppca* package has the following outline
 ```{r}
-#Load the R package
 library(zibppca)
-
 #Run the main command 
 result <- zibppca(data,scale. = TRUE)
 
