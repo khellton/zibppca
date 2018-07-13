@@ -50,7 +50,7 @@ The zibppca package has the following outline
 library(zibppca)
 
 #Run the main command 
-result <- zibppca(data,.scale = TRUE)
+result <- zibppca(data,scale. = TRUE)
 
 ### Loadings of the first 3 components
 result$loadings[,1:3]

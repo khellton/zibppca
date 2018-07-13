@@ -23,12 +23,6 @@ Example data
 
 First the data is loaded as an data.frame. The distribution of items can be visually inspected by histograms or clustered box plots.
 
-    #> Warning in read.spss("M:\\PCANPI\\Data\\New_selection_nursing_home.sav", :
-    #> M:\PCANPI\Data\New_selection_nursing_home.sav: Unrecognized record type 7,
-    #> subtype 18 encountered in system file
-    #> Warning in read.spss("M:\\PCANPI\\Data\\New_selection_nursing_home.sav", :
-    #> M:\PCANPI\Data\New_selection_nursing_home.sav: Unrecognized record type 7,
-    #> subtype 24 encountered in system file
     #>    Delusions_NPI1 Hallucinations_NPI2 Aggression_NPI3 Depression_NPI4
     #> 1               0                   0               0               6
     #> 2               0                   0               0               0
@@ -63,7 +57,7 @@ First the data is loaded as an data.frame. The distribution of items can be visu
     #> 9                  1                      0           0              3
     #> 10                 6                     12          12              0
 
-![](README_files/figure-markdown_github/unnamed-chunk-1-1.png)![](README_files/figure-markdown_github/unnamed-chunk-1-2.png)![](README_files/figure-markdown_github/unnamed-chunk-1-3.png)
+![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-1-1.png)![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-1-2.png)![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-1-3.png)
 
 Example data
 ============
@@ -75,8 +69,8 @@ The zibppca package has the following outline
 library(zibppca)
 
 #Run the main command 
-result <- zibppca(data,.scale = TRUE)
-#> [1] "Analysing data with 12 variables and 830 observations"
+result <- zibppca(data,scale. = TRUE)
+#> [1] "Analyzing data with 12 variables and 830 observations"
 
 ### Loadings of the first 3 components
 result$loadings[,1:3]
@@ -101,7 +95,7 @@ result$eigenvalues
 plot(result$eigenvalues,main = 'Scree plot',xlab='Eigenvalues')
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-2-1.png)
+![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-1.png)
 
 ``` r
 
@@ -109,4 +103,4 @@ plot(result$eigenvalues,main = 'Scree plot',xlab='Eigenvalues')
 plot(result$scores[,1],result$scores[,2],main = 'Score plot',xlab='1. component',ylab='2. component')
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-2-2.png)
+![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-2-2.png)
